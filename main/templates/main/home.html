@@ -1,0 +1,103 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 🟩 KarnatakaOne Styled Header Image -->
+<div class="karnatakaone-header">
+  <img src="{% static 'images/karnatakaone_header.png' %}" alt="Karnataka One Banner" class="img-fluid w-100">
+</div>
+
+<!-- 🌟 Hero Image Slider -->
+<div class="container-fluid p-0">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'icons/slider/slide1.jpg' %}" class="d-block w-100" style="height: 420px; object-fit: cover;" alt="Slide 1">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'icons/slider/slide2.jpg' %}" class="d-block w-100" style="height: 420px; object-fit: cover;" alt="Slide 2">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'icons/slider/slide3.jpg' %}" class="d-block w-100" style="height: 420px; object-fit: cover;" alt="Slide 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+<!-- 🏢 Welcome Message -->
+<div class="text-center my-5 px-3">
+  <h1 class="fw-bold text-success">Welcome to Karnataka One Center</h1>
+  <h3 class="fw-semibold">F-Kalaburagi CC_9</h3>
+  <p class="text-muted fs-5">Your one-stop solution for online government and utility services.</p>
+</div>
+
+<!-- 🧾 Our Services Section -->
+<div class="container mb-5">
+  <h3 class="mb-4 text-danger text-center">🌐 Popular Services</h3>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for service in services|slice:":6" %}
+    <div class="col">
+      <div class="card h-100 text-center shadow-sm border-0">
+        <div class="card-body">
+          <img src="{% static 'icons/' %}{{ service.code|lower }}.png"
+               alt="{{ service.name }}"
+               class="mb-3"
+               height="60"
+               style="object-fit: contain;">
+          <h5 class="card-title text-uppercase">{{ service.name }}</h5>
+          <p class="text-muted small">Access {{ service.name }} quickly and easily from our center.</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- 📞 Contact Call to Action -->
+<div class="bg-light py-5 text-center">
+  <h4 class="mb-3">Need Help or Have Questions?</h4>
+  <a href="{% url 'contact' %}" class="btn btn-success px-4 py-2">📞 Contact Us</a>
+</div>
+
+<!-- 🔚 Footer Section -->
+<footer class="bg-danger text-white pt-4">
+  <div class="container">
+    <div class="row">
+      <!-- 📍 Address -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Karnataka One Center</h5>
+        <p>F-Kalaburagi CC_9,<br> Near Mohammadi Chowk, Beside Al Ameen School 2nd Cross Galib Colony Msk Mill Jeelanabad Kalaburagi,<br>India - 585103</p>
+      </div>
+      <!-- 🛠 Services -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Services</h5>
+        <ul class="list-unstyled">
+          {% for service in services|slice:":4" %}
+          <li>✔ {{ service.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- 📧 Contact -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Contact</h5>
+        <p>Email: karnatakaone500@gmail.com</p>
+        <p>Phone: 084-72466483 / +91-9242224295</p>
+      </div>
+    </div>
+    <hr class="mt-4 mb-2" style="border-color: #777;">
+    <div class="text-center pb-3">&copy; 2025 Karnataka One Center. All rights reserved.</div>
+  </div>
+</footer>
+
+{% endblock %}

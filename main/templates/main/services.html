@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4 text-center"><strong>Categories of Services</strong></h2>
+
+    <div class="row row-cols-2 row-cols-md-4 g-4">
+        {% for service in services %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 text-center p-3">
+                <div class="card-body">
+                    <!-- 🔹 Service Icon -->
+                    <img src="{% static 'icons/' %}{{ service.code|lower }}.png"
+                    data-default="{% static 'icons/default.png' %}"
+                    alt="{{ service.name }} icon"
+                    class="mb-3"
+                    height="60"
+                    loading="lazy"
+                    style="object-fit: contain;"
+                    onerror="this.src=this.dataset.default;">
+
+                    <!-- 🔹 Service Name -->
+                    <h6 class="card-title text-uppercase text-primary fw-semibold">
+                        {{ service.name }}
+                    </h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- 📞 Contact Call to Action -->
+<div class="bg-light py-5 text-center">
+  <h4 class="mb-3">Need Help or Have Questions?</h4>
+  <a href="{% url 'contact' %}" class="btn btn-success px-4 py-2">📞 Contact Us</a>
+</div>
+
+<!-- 🔚 Footer Section -->
+<footer class="bg-danger text-white pt-4">
+  <div class="container">
+    <div class="row">
+      <!-- 📍 Address -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Karnataka One Center</h5>
+        <p>F-Kalaburagi CC_9,<br> Near Mohammadi Chowk, Beside Al Ameen School 2nd Cross Galib Colony Msk Mill Jeelanabad Kalaburagi,<br>India - 585103</p>
+      </div>
+      <!-- 🛠 Services -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Services</h5>
+        <ul class="list-unstyled">
+          {% for service in services|slice:":4" %}
+          <li>✔ {{ service.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- 📧 Contact -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Contact</h5>
+        <p>Email: karnatakaone500@gmail.com</p>
+        <p>Phone: 084-72466483 / +91-9242224295</p>
+      </div>
+    </div>
+    <hr class="mt-4 mb-2" style="border-color: #777;">
+    <div class="text-center pb-3">&copy; 2025 Karnataka One Center. All rights reserved.</div>
+  </div>
+</footer>
+{% endblock %}

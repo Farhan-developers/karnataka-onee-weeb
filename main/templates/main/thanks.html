@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container py-5">
+  <div class="text-center bg-light p-5 rounded shadow-sm">
+    <img src="{% static 'images/karnatakaone_header.png' %}" alt="Thank You" style="height: 80px;" class="mb-4">
+
+    <h2 class="fw-bold text-success mb-3">🎉 Thank You for Contacting Us!</h2>
+    <p class="lead text-muted mb-4">Your enquiry has been received successfully.</p>
+    
+    <p class="text-dark">We appreciate your interest in <strong>Karnataka One Center</strong>. Our team will review your message and respond to you as soon as possible.</p>
+    
+    <a href="/" class="btn btn-success mt-4 px-4">Back to Home</a>
+  </div>
+</div>
+
+{% endblock %}

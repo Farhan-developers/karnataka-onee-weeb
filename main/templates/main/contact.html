@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="container py-5">
+  <h2 class="text-center mb-5 fw-bold text-dark">Contact Us</h2>
+
+  <div class="row g-5">
+    <!-- Left: Contact Info & Map -->
+    <div class="col-md-6">
+      <div class="mb-4">
+        <h4 class="fw-bold text-danger">Karnataka One Center</h4>
+        <p class="mb-1">Near Mohammadi Chowk, Beside Al Ameen School, 2nd Cross</p>
+        <p class="mb-1">Galib Colony, Msk Mill, Jeelanabad, Kalaburagi, Karnataka - 585103</p>
+        <p class="mb-3">India</p>
+
+        <p>📞 <strong class="text-dark">Land Line: +91-084724 66483</strong></p>
+        <p>📱 <strong class="text-dark">Mobile: +91-92422 24295</strong></p>
+        <p>📧 <strong class="text-dark">Email: karnatakaone500@gmail.com</strong></p>
+      </div>
+
+      <h5 class="fw-bold mb-3">📍 Find Us on Map</h5>
+      <div class="ratio ratio-4x3 rounded shadow-sm">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30471.83693137236!2d76.77542687431641!3d17.316532600000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc8b9003d50e657%3A0xb24ac4d00c6db589!2sKARNATAKA%20ONE!5e0!3m2!1sen!2sin!4v1752318736260!5m2!1sen!2sin"
+          style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <div class="col-md-6">
+      <div class="bg-light p-4 rounded shadow-sm">
+        <h4 class="mb-4 fw-semibold">Send Us a Message</h4>
+        <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="mb-3">
+              <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}
+                <div class="text-danger small mt-1">{{ field.errors|striptags }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary px-4">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🔚 Footer Section -->
+<footer class="bg-danger text-white pt-4 mt-5">
+  <div class="container">
+    <div class="row">
+      <!-- 📍 Address -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Karnataka One Center</h5>
+        <p>F-Kalaburagi CC_9,<br> Near Mohammadi Chowk, Beside Al Ameen School 2nd Cross Galib Colony Msk Mill Jeelanabad Kalaburagi,<br>India - 585103</p>
+      </div>
+      <!-- 🛠 Services -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Services</h5>
+        <ul class="list-unstyled">
+          {% for service in services|slice:":4" %}
+            <li>✔ {{ service.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- 📧 Contact -->
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Contact</h5>
+        <p>Email: karnatakaone500@gmail.com</p>
+        <p>Phone: 084-72466483 / +91-9242224295</p>
+      </div>
+    </div>
+    <hr class="mt-4 mb-2" style="border-color: #777;">
+    <div class="text-center pb-3">&copy; 2025 Karnataka One Center. All rights reserved.</div>
+  </div>
+</footer>
+
+{% endblock %}
