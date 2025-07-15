@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: karnatakaone-app
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn karnatakaone.wsgi:application"
+    runtime: python
+    region: oregon
+    branch: master
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: karnatakaone.settings
+      - key: DEBUG
+        value: "False"
